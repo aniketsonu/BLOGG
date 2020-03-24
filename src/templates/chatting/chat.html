@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<h2></h2>
+
+<style type="text/css">
+	@media (max-width: 768px) {
+		.right-column{
+			margin-left: 0px;
+		}
+	}
+
+	@media (min-width: 768px) {
+		.right-column{
+			margin-left: 20px;
+		}
+	}
+
+	.blog-post-container{
+		margin-bottom: 20px;
+		width: 100%;
+	}
+	.create-post-bar{
+		background-color: #fff;
+		margin-bottom:20px;
+	}
+
+	.left-column{
+		padding:0px;
+	}
+
+	.right-column{
+		padding:0px;
+	}
+	.lead{
+		font-size: 17px;
+	}
+</style>
+
+What chat room would you like to enter/create chat room?<br/>
+
+    <input id="room-name-input" type="text" size="100"/><br/>
+    <input id="room-name-submit" type="button" value="Enter"/>
+    <h2>Rooms present</h2>
+    {% for room in rooms %}
+    <a href="http://127.0.0.1:8000/chat/{{room.room}}"><h3>{{room.room}}</h3></a>
+    {% endfor %}
+    <script>
+        {% for room in rooms %}
+        console.log('{{room.room}}');
+        {% endfor %}
+        var Name = "{{ user.username }}";
+        myHeading = document.querySelector('h2');
+        console.log(Name);
+        //function setUserName() {
+        // let myName = prompt('Please enter your name.');
+        // localStorage.setItem('name', myName);
+        // myHeading.textContent = 'Hi, ' + myName;
+        //}
+        //setUserName();
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            if (Name=='')
+            {
+             window.location.pathname = '/' + 'login' + '/';
+            }
+            else
+            {
+             window.location.pathname = '/chat/' + roomName + '/';
+            };
+
+}
+    </script>
+{% endblock %}

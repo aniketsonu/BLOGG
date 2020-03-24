@@ -5,6 +5,7 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
 from app1.views import home_page
+from chat.views import chat, room
 
 from account.views import (
     login_view,
@@ -19,6 +20,8 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('must_authenticate/', must_authenticate, name="must_authenticate"),
     path('', home_page, name="home"),
+    path('chat/', chat, name='chat'),
+    path('chat/<str:room_name>/', room, name='room'),
     path('login/', login_view, name="login"),
     path('register/', registration_view, name="register"),
     path('logout/', logout_view, name="logout"),

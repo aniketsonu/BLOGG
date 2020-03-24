@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'account',
     'app1',
     'blog',
+    'channels',
+    'chat',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -73,6 +75,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'social.wsgi.application'
+ASGI_APPLICATION = "social.routing.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
