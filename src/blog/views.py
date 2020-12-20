@@ -6,7 +6,7 @@ from account.models import Account
 
 from .models import BlogPost
 
-
+# Creates View for uploading blog
 def create_blog(request):
     title = 'Create Blog'
     context = {}
@@ -27,6 +27,7 @@ def create_blog(request):
     return render(request, "blog/create.html", context)
 
 
+# Renders Blog view
 def detail_blog_view(request, slug):
     context = {}
 
@@ -35,6 +36,7 @@ def detail_blog_view(request, slug):
 
     return render(request, 'blog/detail_blog.html', context)
 
+# Editing Blogs
 def edit_blog(request, slug):
     title = 'Update Blog'
     context = {}
