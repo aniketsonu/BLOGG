@@ -67,7 +67,7 @@ def update_profile(request):
             }
             form.save()
             context['success_message'] = 'Updated'
-            return redirect("edit")
+            return redirect("home")
 
     else:
         form = UserForm(initial={

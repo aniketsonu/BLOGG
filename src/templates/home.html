@@ -75,8 +75,13 @@
 		</div>
 		<!-- end blog feed -->
 
-<div class="right-column col-lg-3 d-lg-flex d-none flex-column">
+<div class="flex-column p-3">
+	<h2>Registered users</h2>
 
+	{% for account in accounts %}
+	 {{ account.username }}
+	<br>
+	{% endfor %}
 			<div class="card create-post-bar d-flex flex-column p-3">
 				<img class="img-fluid d-block m-auto pb-2" src="{% static 'dog.jpeg' %}" width="72" height="72">
 				<p class="lead">Click below to post your blog.</p>
@@ -84,11 +89,6 @@
 			</div>
 Click <a href="{% url 'chat' %}">here</a> to chat
 </div>
-        </div>
-<h2>Registered users</h2>
+        </div></div>
 
-  {% for account in accounts %}
-   {{ account }}
-  <br>
-  {% endfor %}
 {% endblock content %}

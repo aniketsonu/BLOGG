@@ -15,6 +15,7 @@ from account.views import (
     must_authenticate
 )
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
